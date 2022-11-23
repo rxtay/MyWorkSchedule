@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    static String CONNECTION_STRING = "jdbc:mysql://localhost:3306/management?serverTimezone=UTC";
+    static String CONNECTION_STRING = "jdbc:mysql://localhost:3306/myworkschedule?serverTimezone=UTC";
     static String USER = "root";
-    static String PASSWORD = "root";
+    static String PASSWORD = "cdev";
     public static Connection getConnection() {
         Connection conn = null;
         try {
