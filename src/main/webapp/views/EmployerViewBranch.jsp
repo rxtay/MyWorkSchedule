@@ -45,7 +45,7 @@
 </div>
 <%--    Footer section    --%>
 <footer class="py-3 fixed-bottom">
-    <p class="text-center text-muted">© Copyright 2022, MyWorkScedule</p>
+    <p class="text-center text-muted">© Copyright 2022, MyWorkSchedule</p>
 </footer>
 </body>
 
