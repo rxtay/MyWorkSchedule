@@ -14,7 +14,9 @@
     <div class="d-flex mb-4 justify-content-between">
         <h1 class="fs-4">${branch.getName()}</h1>
         <div>
-            <button type="button" class="btn-sm btn btn-dark" data-bs-toggle="modal" data-bs-target="#newShiftModal">New Shift</button>
+            <button type="button" class="btn-sm btn btn-dark" data-bs-toggle="modal" data-bs-target="#newShiftModal">New
+                Shift
+            </button>
             <button type="button" class="btn-sm btn btn-outline-dark">Announcements</button>
             <button type="button" class="btn-sm btn btn-outline-dark">View Members</button>
         </div>
@@ -30,7 +32,8 @@
                                 <p class="card-text">${shift.getFormattedDays()}</p>
                             </div>
                             <div>
-                                <a onclick='handleEdit("${shift.getFormattedDate()}", "${shift.getShiftId()}", "${shift.getContent()}", "${shift.getRate()}", "${shift.getStartTime()}", "${shift.getEndTime()}")' class="bi bi-pencil"></a>
+                                <a onclick='handleEdit("${shift.getFormattedDate()}", "${shift.getShiftId()}", "${shift.getContent()}", "${shift.getRate()}", "${shift.getStartTime()}", "${shift.getEndTime()}")'
+                                   class="bi bi-pencil"></a>
                                 <a href="#" class="bi bi-trash"></a>
                             </div>
                         </div>
@@ -40,6 +43,10 @@
         </c:forEach>
     </div>
 </div>
+<%--    Footer section    --%>
+<footer class="py-3 fixed-bottom">
+    <p class="text-center text-muted">© Copyright 2022, MyWorkScedule</p>
+</footer>
 </body>
 
 <%--    New shift modal    --%>
@@ -55,7 +62,8 @@
                     <div class="form-group">
                         <div class="row m-0 mb-2 p-0">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Description" aria-label="description" required>
+                                <input type="text" class="form-control" placeholder="Description"
+                                       aria-label="description" required>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control" placeholder="Rate" aria-label="Rate" required>
@@ -97,10 +105,12 @@
                         <input type="hidden" id="shiftId" aria-label="shiftId">
                         <div class="row m-0 mb-2 p-0">
                             <div class="col">
-                                <input type="text" id="description" class="form-control" placeholder="Description" aria-label="description" required>
+                                <input type="text" id="description" class="form-control" placeholder="Description"
+                                       aria-label="description" required>
                             </div>
                             <div class="col">
-                                <input type="number" id="rate" class="form-control" placeholder="Rate" aria-label="Rate" required>
+                                <input type="number" id="rate" class="form-control" placeholder="Rate" aria-label="Rate"
+                                       required>
                             </div>
                         </div>
                         <div class="row m-0 p-0">
