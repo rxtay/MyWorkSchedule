@@ -63,33 +63,27 @@ public class BranchDaoImpl implements BranchDao {
     }
 
 
-    public List<Branch> showEmployerBranches(Integer employerId){
-
+    public List<Branch> showEmployerBranches(int employerId){
         Branch branch = null;
         List<Branch> branches = new ArrayList<>();
         try {
             Connection connection = DatabaseConnection.getConnection();
-
-            String sql = "SELECT * FROM myworkschedule.branch WHERE employerId = ?;";
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1,employerId);
-            System.out.println(statement);
+            String query = "SELECT * FROM myworkschedule.branch WHERE employerId = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, employerId);
             ResultSet set = statement.executeQuery();
-
-
             while (set.next()){
                 branch = new Branch();
-                branch.setBranchId(set.getInt("branchId"));
-                branch.setName(set.getString("name"));
-                branch.setEmployerId(set.getInt("employerId"));
+                int branchId = set.getInt("branchId");
+                String name = set.getString("name");
+                branch.setBranchId(branchId);
+                branch.setName(name);
+                branch.setEmployerId(employerId);
                 branches.add(branch);
-
             }
-        }catch (SQLException exception){
-
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
         }
         return branches;
-
     }
 }
