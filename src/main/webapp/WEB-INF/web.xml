@@ -7,4 +7,10 @@
         <servlet-name>EmployerViewBranchServlet</servlet-name>
         <url-pattern>/employer/branch</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EmployerBranchesServlet</servlet-name>
+        <url-pattern>/employer/mybranches</url-pattern>
+    </servlet-mapping>
+
 </web-app>
