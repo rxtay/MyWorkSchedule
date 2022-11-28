@@ -32,5 +32,24 @@ public class UserDaoImpl extends HttpServlet {
         return employeeId;
     }
 
+    public int insertNewEmployerId(){
+        int employerId =0 ;
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            String query = "INSERT INTO employer values ()";
+            PreparedStatement statement = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+            statement.executeUpdate();
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()){
+                if (generatedKeys.next()){
+                    employerId = generatedKeys.getInt(1);
+                }else {
+                    throw new SQLException("Creating new employerId failed.");
+                }
+            }
+        } catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+        return employerId;
+    }
 
 }
