@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 
 import java.sql.*;
 
-public class UserDaoImpl extends HttpServlet {
-
+public class UserDaoImpl implements UserDao {
+    @Override
     public int insertNewEmployeeId(){
         int employeeId =0;
         try {
@@ -29,7 +29,7 @@ public class UserDaoImpl extends HttpServlet {
         }
         return employeeId;
     }
-
+    @Override
     public int insertNewEmployerId(){
         int employerId =0 ;
         try {
@@ -49,8 +49,9 @@ public class UserDaoImpl extends HttpServlet {
         }
         return employerId;
     }
-
+    @Override
     public int registerUser(User user, String role){
+
         Connection connection = DatabaseConnection.getConnection();
         int rowsaffected;
         int employeeId;
