@@ -13,4 +13,8 @@
         <servlet-name>EmployerViewBranchServlet</servlet-name>
         <url-pattern>/employer/branch</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeBranchServlet</servlet-name>
+        <url-pattern>/EmployeeBranchServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
