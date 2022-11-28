@@ -3,11 +3,9 @@ package com.example.myworkschedule.dao.user;
 import com.example.myworkschedule.beans.User;
 import com.example.myworkschedule.dao.DatabaseConnection;
 
-import javax.servlet.ServletException;
+
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
 import java.sql.*;
 
 public class UserDaoImpl extends HttpServlet {
@@ -52,4 +50,39 @@ public class UserDaoImpl extends HttpServlet {
         return employerId;
     }
 
+    public int registerUser(User user, String role){
+        Connection connection = DatabaseConnection.getConnection();
+        int rowsaffected;
+        int employeeId;
+        int employerId;
+        try{
+            if(role == "employee"){
+                employeeId = insertNewEmployeeId();
+                String query = "INSERT INTO user (firstName, lastName, email, employeeId)values (?,?,?,?)";
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setString(1,user.getFirstName());
+                statement.setString(2,user.getLastName());
+                statement.setString(3, user.getEmail());
+                statement.setInt(4,employeeId);
+
+                rowsaffected = statement.executeUpdate();
+            }else if (role == "employer"){
+                employerId = insertNewEmployerId();
+
+                String query = "INSERT INTO user (firstName, lastName, email, employer_employerId)values (?,?,?,?)";
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setString(1,user.getFirstName());
+                statement.setString(2,user.getLastName());
+                statement.setString(3, user.getEmail());
+                statement.setInt(4,employerId);
+
+                rowsaffected = statement.executeUpdate();
+            }else{
+                throw new SQLException();
+            }
+        }catch(SQLException e) {
+            throw  new RuntimeException(e);
+        }
+        return rowsaffected;
+    }
 }
