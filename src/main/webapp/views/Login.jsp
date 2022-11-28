@@ -22,17 +22,17 @@
                 <div class="card rounded">
                     <div class="card-body p-5">
                         <h3 class="text-center mb-5">MyWorkSchedule</h3>
-                        <form>
+                        <form method="post" action="LoginServlet">
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                                <label for="email">Email address</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                <label for="password">Password</label>
                             </div>
                             <div class="mb-4">
-                                <select class="form-select" aria-label="type" required>
+                                <select class="form-select" name="type" id="type" aria-label="type" required>
                                     <option value="employee" selected>Employee</option>
                                     <option value="employer">Employer</option>
                                 </select>
