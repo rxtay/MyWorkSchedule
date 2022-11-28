@@ -13,4 +13,9 @@
         <servlet-name>EmployerViewBranchServlet</servlet-name>
         <url-pattern>/employer/branch</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ViewBranchEmployee</servlet-name>
+        <url-pattern>/employer/branch/members</url-pattern>
+    </servlet-mapping>
 </web-app>
