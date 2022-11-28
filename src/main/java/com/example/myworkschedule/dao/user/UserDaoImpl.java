@@ -56,30 +56,33 @@ public class UserDaoImpl implements UserDao {
         int rowsaffected;
         int employeeId;
         int employerId;
+        System.out.println(role);
         try{
-            if(role == "employee"){
+            if(role.equals("employee")){
                 employeeId = insertNewEmployeeId();
-                String query = "INSERT INTO user (firstName, lastName, email, employeeId)values (?,?,?,?)";
+                String query = "INSERT INTO user (firstName, lastName, email,password, employeeId)values (?,?,?,?,?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1,user.getFirstName());
                 statement.setString(2,user.getLastName());
                 statement.setString(3, user.getEmail());
-                statement.setInt(4,employeeId);
+                statement.setString(4, user.getPassword());
+                statement.setInt(5,employeeId);
 
                 rowsaffected = statement.executeUpdate();
-            }else if (role == "employer"){
+            }else if (role.equals("employer")){
                 employerId = insertNewEmployerId();
 
-                String query = "INSERT INTO user (firstName, lastName, email, employer_employerId)values (?,?,?,?)";
+                String query = "INSERT INTO user (firstName, lastName, email,password ,employer_employerId)values (?,?,?,?,?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1,user.getFirstName());
                 statement.setString(2,user.getLastName());
                 statement.setString(3, user.getEmail());
-                statement.setInt(4,employerId);
+                statement.setString(4, user.getPassword());
+                statement.setInt(5,employerId);
 
                 rowsaffected = statement.executeUpdate();
             }else{
-                throw new SQLException();
+                rowsaffected = 0;
             }
         }catch(SQLException e) {
             throw  new RuntimeException(e);
