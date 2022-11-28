@@ -61,4 +61,55 @@ public class BranchDaoImpl implements BranchDao {
         }
         return new BranchShift(branch, new ArrayList(map.values()));
     }
+
+    @Override
+    public List<Branch> getEmployeeBranches(int employeeId) {
+        Branch branch = null;
+        List<Branch> branches = new ArrayList<>();
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            String query = "SELECT b.* FROM branchemployee be JOIN branch b ON be.branch_branchId = b.branchId WHERE employee_employeeId = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, employeeId);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                branch = new Branch();
+                int branchId = set.getInt("branchId");
+                String name = set.getString("name");
+                int employerId = set.getInt("employerId");
+                branch.setBranchId(branchId);
+                branch.setName(name);
+                branch.setEmployerId(employerId);
+                branches.add(branch);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return branches;
+    }
+
+
+    public List<Branch> showEmployerBranches(int employerId){
+        Branch branch = null;
+        List<Branch> branches = new ArrayList<>();
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            String query = "SELECT * FROM myworkschedule.branch WHERE employerId = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, employerId);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                branch = new Branch();
+                int branchId = set.getInt("branchId");
+                String name = set.getString("name");
+                branch.setBranchId(branchId);
+                branch.setName(name);
+                branch.setEmployerId(employerId);
+                branches.add(branch);
+            }
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+        return branches;
+    }
 }
