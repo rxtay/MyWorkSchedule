@@ -19,7 +19,7 @@ public class EmployeeBranchServlet extends HttpServlet {
         System.out.println(branch);
 
         request.setAttribute("branches",branch);
-        request.getRequestDispatcher("/views/EmployeeBranch.jsp").forward(request,response);
+        request.getRequestDispatcher("/views/EmployeeBranch.jsp").forward(request, response);
     }
 
     @Override
