@@ -27,15 +27,9 @@
                                 <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
                                 <label for="email">Email address</label>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-4">
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                 <label for="password">Password</label>
-                            </div>
-                            <div class="mb-4">
-                                <select class="form-select" name="type" id="type" aria-label="type" required>
-                                    <option value="employee" selected>Employee</option>
-                                    <option value="employer">Employer</option>
-                                </select>
                             </div>
                             <div class="d-grid">
                                 <input type="submit" class="btn btn-primary btn-block" value="Login" />
