@@ -51,4 +51,12 @@
     </div>
 </section>
 </body>
+<script>
+    window.onload = () => {
+        var message = '<%=request.getAttribute("alert")%>'
+        if (message !== "null") {
+            alert(message)
+        }
+    }
+</script>
 </html>
