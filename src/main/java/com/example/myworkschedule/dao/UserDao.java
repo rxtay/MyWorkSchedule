@@ -25,7 +25,7 @@ public class UserDao {
             ResultSet set = statement.executeQuery();
 
             while (set.next()){
-                user = new User(0,"","","",0,0);
+                user = new User(0,"","","","",0,0);
                 user.setUserId(set.getInt("userId"));
                 user.setFirstName(set.getString("firstName"));
                 user.setLastName(set.getString("lastName"));
