@@ -1,7 +1,5 @@
 package com.example.myworkschedule.beans;
 
-import java.util.Optional;
-
 public class User {
     private int userId;
     private String firstName;
