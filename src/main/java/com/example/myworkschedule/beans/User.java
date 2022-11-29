@@ -1,7 +1,5 @@
 package com.example.myworkschedule.beans;
 
-import java.util.Optional;
-
 public class User {
     private int userId;
     private String firstName;
@@ -79,4 +77,3 @@ public class User {
         this.employerId = employerId;
     }
 }
-
