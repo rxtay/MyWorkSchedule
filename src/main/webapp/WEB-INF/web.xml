@@ -3,7 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-
+    <servlet-mapping>
+        <servlet-name>EmployeeBranchServlet</servlet-name>
+        <url-pattern>/employee/branches</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EmployerBranchesServlet</servlet-name>
         <url-pattern>/employer/branches</url-pattern>
@@ -12,6 +15,11 @@
     <servlet-mapping>
         <servlet-name>EmployerViewBranchServlet</servlet-name>
         <url-pattern>/employer/branch</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegisterAccountServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
