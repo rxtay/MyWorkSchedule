@@ -22,7 +22,7 @@
                 <div class="card rounded">
                     <div class="card-body p-5">
                         <h3 class="text-center mb-5">MyWorkSchedule</h3>
-                        <form method="post" action="LoginServlet">
+                        <form method="post" action="login">
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
                                 <label for="email">Email address</label>
@@ -38,10 +38,7 @@
                                 </select>
                             </div>
                             <div class="d-grid">
-                                <button type="submit"
-                                        class="btn btn-primary btn-block">
-                                    Login
-                                </button>
+                                <input type="submit" class="btn btn-primary btn-block" value="Login" />
                             </div>
                             <p class="text-center text-muted mt-5 mb-0">Don't have an account?
                                 <a href="#" class="text-body"><u>Register</u></a>
