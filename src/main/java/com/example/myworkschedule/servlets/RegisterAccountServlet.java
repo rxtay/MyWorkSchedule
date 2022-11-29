@@ -1,4 +1,4 @@
-Creadpackage com.example.myworkschedule.servlets;
+package com.example.myworkschedule.servlets;
 
 import com.example.myworkschedule.beans.User;
 import com.example.myworkschedule.dao.user.UserDaoImpl;
@@ -18,5 +18,19 @@ public class RegisterAccountServlet extends HttpServlet {
         req.getRequestDispatcher("/views/RegisterAccount.jsp").forward(req,resp);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        String role = req.getParameter("role");
+
+        User user = new User(0, firstName, lastName, email, password, 0,0);
+
+        UserDaoImpl dao = new UserDaoImpl();
+        int affectedRows = dao.registerUser(user,role);
+        req.getRequestDispatcher("/views/RegisterAccount.jsp").forward(req,resp);
+    }
 }
