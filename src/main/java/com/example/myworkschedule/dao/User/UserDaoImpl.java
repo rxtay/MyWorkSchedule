@@ -4,6 +4,8 @@ import com.example.myworkschedule.beans.User;
 import com.example.myworkschedule.dao.DatabaseConnection;
 import com.example.myworkschedule.dao.User.UserDao;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImpl implements UserDao {
     @Override
@@ -116,4 +118,30 @@ public class UserDaoImpl implements UserDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<User> getEmployeesAssignedShift(int shiftId){
+        User user;
+        List<User> users = new ArrayList<>();
+        try{
+            Connection connection = DatabaseConnection.getConnection();
+            String sql= "SELECT u.firstName, u.lastName FROM shift s \n" +
+                    "JOIN employeeshift es ON shift_shiftId = s.shiftId \n" +
+                    "JOIN user u ON employee_employeeId = employeeId WHERE s.shiftId = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1,shiftId);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                String firstName = set.getString("firstName");
+                String lastName = set.getString("lastName");
+                user = new User(0, firstName,lastName,null,null,null ,null );
+                users.add(user);
+            }
+
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+        return users;
+    }
+
 }
