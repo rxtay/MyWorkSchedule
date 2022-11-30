@@ -76,4 +76,3 @@ public class User {
         this.employerId = employerId;
     }
 }
-
