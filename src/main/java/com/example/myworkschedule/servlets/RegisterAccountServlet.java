@@ -1,7 +1,7 @@
 package com.example.myworkschedule.servlets;
 
 import com.example.myworkschedule.beans.User;
-import com.example.myworkschedule.dao.user.UserDaoImpl;
+import com.example.myworkschedule.dao.User.UserDaoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
