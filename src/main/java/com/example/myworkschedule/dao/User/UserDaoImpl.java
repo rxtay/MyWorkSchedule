@@ -1,7 +1,8 @@
-package com.example.myworkschedule.dao.User;
+package com.example.myworkschedule.dao.user;
 
 import com.example.myworkschedule.beans.User;
 import com.example.myworkschedule.dao.DatabaseConnection;
+import com.example.myworkschedule.dao.User.UserDao;
 import java.sql.*;
 
 public class UserDaoImpl implements UserDao {
