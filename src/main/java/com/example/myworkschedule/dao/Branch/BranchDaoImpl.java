@@ -3,7 +3,6 @@ package com.example.myworkschedule.dao.Branch;
 import com.example.myworkschedule.beans.*;
 import com.example.myworkschedule.dao.DatabaseConnection;
 import java.sql.*;
-import java.sql.Date;
 import java.util.*;
 
 public class BranchDaoImpl implements BranchDao {
@@ -114,16 +113,17 @@ public class BranchDaoImpl implements BranchDao {
     }
 
     @Override
-    public void insertBranch(Branch branch) {
+    public DataOrException<Boolean> insertBranch(Branch branch) {
         try {
             Connection conn = DatabaseConnection.getConnection();
             String query = "INSERT INTO myworkschedule.branch (name, employerId) VALUES (?, ?);";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, branch.getName());
             statement.setInt(2, branch.getEmployerId());
-            statement.executeQuery();
+            Boolean result = statement.execute();
+            return new DataOrException<Boolean>(result, null);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return new DataOrException<Boolean>(null, e);
         }
     }
 }
