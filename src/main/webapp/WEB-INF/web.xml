@@ -31,4 +31,11 @@
         <servlet-name>ViewBranchEmployee</servlet-name>
         <url-pattern>/employer/branch/members</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EmployerBranchShiftServlet</servlet-name>
+        <url-pattern>/employer/branch/shift</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
