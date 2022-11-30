@@ -5,13 +5,12 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-
     private String password;
     private Integer employeeId;
     private Integer employerId;
 
 
-    public User(int userId, String firstName, String lastName, String email, String password,Integer employeeId, Integer employerId) {
+    public User(int userId, String firstName, String lastName, String email, String password, Integer employeeId, Integer employerId) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
