@@ -1,4 +1,4 @@
-package com.example.myworkschedule.dao.user;
+package com.example.myworkschedule.dao.User;
 
 import com.example.myworkschedule.beans.User;
 import com.example.myworkschedule.dao.DatabaseConnection;
