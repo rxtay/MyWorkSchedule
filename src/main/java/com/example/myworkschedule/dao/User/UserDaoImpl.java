@@ -171,4 +171,19 @@ public class UserDaoImpl implements UserDao {
         }
         return users;
     }
+    public int  addEmployeeToBranch(int employeeId, int branchId){
+        System.out.println("addEmployeeToBranch");
+        int rowsAffected;
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            String sql = "INSERT INTO myworkschedule.branchemployee VALUES (?,?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1,employeeId);
+            statement.setInt(2,branchId);
+            rowsAffected = statement.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return rowsAffected;
+    }
 }
