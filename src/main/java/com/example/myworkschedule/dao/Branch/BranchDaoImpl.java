@@ -2,8 +2,8 @@ package com.example.myworkschedule.dao.Branch;
 
 import com.example.myworkschedule.beans.*;
 import com.example.myworkschedule.dao.DatabaseConnection;
+
 import java.sql.*;
-import java.sql.Date;
 import java.util.*;
 
 public class BranchDaoImpl implements BranchDao {
@@ -64,7 +64,7 @@ public class BranchDaoImpl implements BranchDao {
 
     @Override
     public List<Branch> getEmployeeBranches(int employeeId) {
-        Branch branch = null;
+        Branch branch;
         List<Branch> branches = new ArrayList<>();
         try {
             Connection connection = DatabaseConnection.getConnection();
@@ -88,9 +88,8 @@ public class BranchDaoImpl implements BranchDao {
         return branches;
     }
 
-
     public List<Branch> showEmployerBranches(int employerId){
-        Branch branch = null;
+        Branch branch;
         List<Branch> branches = new ArrayList<>();
         try {
             Connection connection = DatabaseConnection.getConnection();
@@ -125,5 +124,24 @@ public class BranchDaoImpl implements BranchDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public List<Shift> getEmployeeShift(int employeeId) {
+        Shift shift;
+        List<Shift> shifts = new ArrayList<>();
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            String query = "SELECT b.* FROM employeeshift be JOIN shift b ON be.shift_shiftId = b.shiftId WHERE employee_employeeId = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, employeeId);
+            ResultSet set = statement.executeQuery();
+            System.out.println(set);
+            while (set.next()){
+                shift = new Shift(set.getInt("shiftId"), set.getString("content"), set.getTimestamp("startTime"), set.getTimestamp("endTime"),set.getInt("rate"),set.getInt("branchId"));
+                shifts.add(shift);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return shifts;
     }
 }
