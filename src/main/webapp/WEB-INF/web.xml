@@ -38,4 +38,9 @@
     </servlet-mapping>
 
 
+
+    <servlet-mapping>
+        <servlet-name>ViewBranchEmployeesShiftServlet</servlet-name>
+        <url-pattern>/branch/employee/shift</url-pattern>
+    </servlet-mapping>
 </web-app>
