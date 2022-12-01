@@ -143,5 +143,32 @@ public class UserDaoImpl implements UserDao {
         }
         return users;
     }
+    public List<User> searchEmployeeWithoutBranch() {
+        User user;
+        List<User> users = new ArrayList<>();
 
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            String sql = "select * from user where user.employeeId IN (select employee.employeeId \n" +
+                    "from employee\n" +
+                    "where not exists (select * from branchemployee where employee.employeeId = branchemployee.employee_employeeId))";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            System.out.println(statement);
+            ResultSet set = statement.executeQuery();
+
+            while (set.next()){
+                user = new User(0,"","","","",0,0);
+                user.setUserId(set.getInt("userId"));
+                user.setFirstName(set.getString("firstName"));
+                user.setLastName(set.getString("lastName"));
+                user.setEmail(set.getString("email"));
+                user.setEmployeeId(set.getInt("employeeId"));
+                users.add(user);
+            }
+        }
+        catch (SQLException exception){
+            exception.printStackTrace();
+        }
+        return users;
+    }
 }
