@@ -64,7 +64,7 @@ public class BranchDaoImpl implements BranchDao {
 
     @Override
     public List<Branch> getEmployeeBranches(int employeeId) {
-        Branch branch = null;
+        Branch branch;
         List<Branch> branches = new ArrayList<>();
         try {
             Connection connection = DatabaseConnection.getConnection();
@@ -88,9 +88,8 @@ public class BranchDaoImpl implements BranchDao {
         return branches;
     }
 
-
     public List<Branch> showEmployerBranches(int employerId){
-        Branch branch = null;
+        Branch branch;
         List<Branch> branches = new ArrayList<>();
         try {
             Connection connection = DatabaseConnection.getConnection();
@@ -111,5 +110,39 @@ public class BranchDaoImpl implements BranchDao {
             throw  new RuntimeException(e);
         }
         return branches;
+    }
+
+    @Override
+    public DataOrException<Boolean> insertBranch(Branch branch) {
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            String query = "INSERT INTO myworkschedule.branch (name, employerId) VALUES (?, ?);";
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, branch.getName());
+            statement.setInt(2, branch.getEmployerId());
+            Boolean result = statement.execute();
+            return new DataOrException<Boolean>(result, null);
+        } catch (SQLException e) {
+            return new DataOrException<Boolean>(null, e);
+        }
+    }
+    public List<Shift> getEmployeeShift(int employeeId) {
+        Shift shift;
+        List<Shift> shifts = new ArrayList<>();
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            String query = "SELECT b.* FROM employeeshift be JOIN shift b ON be.shift_shiftId = b.shiftId WHERE employee_employeeId = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, employeeId);
+            ResultSet set = statement.executeQuery();
+            System.out.println(set);
+            while (set.next()){
+                shift = new Shift(set.getInt("shiftId"), set.getString("content"), set.getTimestamp("startTime"), set.getTimestamp("endTime"),set.getInt("rate"),set.getInt("branchId"));
+                shifts.add(shift);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return shifts;
     }
 }
