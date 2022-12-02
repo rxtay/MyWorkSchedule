@@ -2,6 +2,7 @@ package com.example.myworkschedule.dao.Branch;
 
 import com.example.myworkschedule.beans.Branch;
 import com.example.myworkschedule.beans.BranchShift;
+import com.example.myworkschedule.beans.User;
 
 import java.util.List;
 
