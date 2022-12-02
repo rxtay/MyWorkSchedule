@@ -11,6 +11,5 @@ public interface BranchDao {
     BranchShift getBranch(int branchId);
     List<Branch> getEmployeeBranches(int employeeId);
     List<Shift> getEmployeeShift(int employeeId);
-    void insertBranch(Branch branch);
     DataOrException<Boolean> insertBranch(Branch branch);
 }
