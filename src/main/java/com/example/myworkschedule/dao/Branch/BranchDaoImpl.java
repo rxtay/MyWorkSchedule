@@ -113,16 +113,17 @@ public class BranchDaoImpl implements BranchDao {
     }
 
     @Override
-    public void insertBranch(Branch branch) {
+    public DataOrException<Boolean> insertBranch(Branch branch) {
         try {
             Connection conn = DatabaseConnection.getConnection();
             String query = "INSERT INTO myworkschedule.branch (name, employerId) VALUES (?, ?);";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, branch.getName());
             statement.setInt(2, branch.getEmployerId());
-            statement.executeQuery();
+            Boolean result = statement.execute();
+            return new DataOrException<Boolean>(result, null);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return new DataOrException<Boolean>(null, e);
         }
     }
     public List<Shift> getEmployeeShift(int employeeId) {

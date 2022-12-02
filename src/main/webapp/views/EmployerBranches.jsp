@@ -54,16 +54,16 @@
                 <h5 class="modal-title" id="exampleModalLabel">Create Branch</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form>
+            <form action="branches" method="post">
                 <div class="modal-body">
                     <div class="form-group ">
-                        <label for="CreateBranch">Branch Name</label>
-                        <input id="CreateBranch" class="form-control my-2">
+                        <label for="branchName">Branch Name</label>
+                        <input id="branchName" name="name" class="form-control my-2">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" value="Submit"/>
                 </div>
             </form>
         </div>
@@ -81,8 +81,8 @@
             <form>
                 <div class="modal-body">
                     <div class="form-group ">
-                        <label for="editBranch"> Branch Name</label>
-                        <input id="editBranch" class="form-control my-2">
+                        <label for="name">Branch Name</label>
+                        <input id="name" class="form-control my-2">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -93,4 +93,12 @@
         </div>
     </div>
 </div>
+<script>
+    window.onload = () => {
+        const message = '<%=request.getAttribute("message")%>'
+        if (message !== "null") {
+            alert(message)
+        }
+    }
+</script>
 </html>

@@ -19,7 +19,6 @@
     <div class="container mt-4 mb-4 ">
         <%--    Create button section    --%>
         <div class="d-flex mb-4 justify-content-between">
-
                 <button type="button" class=" btn btn-outline-dark  ">
                     Back
                 </button>
@@ -29,7 +28,6 @@
                 Add Member
             </button>
         </div>
-
         <%--    Branches Section    --%>
         <div class="d-grid">
             <c:forEach var="x" items="${users}">
@@ -47,4 +45,42 @@
         </div>
     </div>
 </body>
+
+<%--    Add employee modal    --%>
+<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBranchEmployeeLabel">Add Employee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+                <div class="modal-body ">
+                    <c:forEach var="x" items="${usersBranchless}">
+                        <form method="post" action="members">
+                            <div class="row m-0 mb-2">
+                                <div class="card">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <h5 class="card-title m-0">${x.firstName} ${x.lastName} ${x.employeeId}</h5>
+                                        <button type="submit"> Add
+                                        <input  type="hidden" value="${x.employeeId}" name="employeeId" id="employeeId">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </c:forEach>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div>
+    </div>
+</div>
+<script>
+    const handleSubmit = (employeeId) => {
+
+    }
+</script>
 </html>
