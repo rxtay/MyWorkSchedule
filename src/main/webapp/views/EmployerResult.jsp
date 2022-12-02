@@ -10,18 +10,15 @@
 
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+    <script src="./webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
     <title>Employer Result</title>
 </head>
 <body>
-
     <div class="container mt-4 mb-4 ">
         <%--    Create button section    --%>
         <div class="d-flex mb-4 justify-content-between">
-
                 <button type="button" class=" btn btn-outline-dark  ">
                     Back
                 </button>
@@ -31,7 +28,6 @@
                 Add Member
             </button>
         </div>
-
         <%--    Branches Section    --%>
         <div class="d-grid">
             <c:forEach var="x" items="${users}">
@@ -79,7 +75,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
-
         </div>
     </div>
 </div>
