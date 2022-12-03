@@ -3,6 +3,8 @@ package com.example.myworkschedule.servlets;
 import com.example.myworkschedule.beans.DataOrException;
 import com.example.myworkschedule.beans.EmployeeShift;
 import com.example.myworkschedule.beans.User;
+import com.example.myworkschedule.dao.Employee.EmployeeDaoImpl;
+import com.example.myworkschedule.dao.EmployeeShift.EmployeeShiftDao;
 import com.example.myworkschedule.dao.EmployeeShift.EmployeeShiftDaoImpl;
 import com.example.myworkschedule.dao.User.UserDaoImpl;
 
@@ -11,7 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "EmployerBranchShiftServlet", value = "/EmployerBranchShiftServlet")
@@ -19,9 +23,14 @@ public class EmployerBranchShiftServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDaoImpl dao = new UserDaoImpl();
-        List<User> users = dao.getEmployeesAssignedShift(1);
-        req.setAttribute("users",users);
+        EmployeeShiftDaoImpl dao = new EmployeeShiftDaoImpl();
+        DataOrException<List<User>> result = dao.GetEmployees(1);
+        if (result.e != null) {
+            req.setAttribute("message", "Failed to retrieve employees.");
+            req.setAttribute("users", new ArrayList<>());
+        } else {
+            req.setAttribute("users", result.data);
+        }
         req.getRequestDispatcher("/views/EmployerBranchShift.jsp").forward(req,resp);
     }
 
@@ -51,6 +60,4 @@ public class EmployerBranchShiftServlet extends HttpServlet {
             }
         }
     }
-
-
 }

@@ -126,23 +126,4 @@ public class BranchDaoImpl implements BranchDao {
             return new DataOrException<Boolean>(null, e);
         }
     }
-    public List<Shift> getEmployeeShift(int employeeId) {
-        Shift shift;
-        List<Shift> shifts = new ArrayList<>();
-        try {
-            Connection connection = DatabaseConnection.getConnection();
-            String query = "SELECT b.* FROM employeeshift be JOIN shift b ON be.shift_shiftId = b.shiftId WHERE employee_employeeId = ?;";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, employeeId);
-            ResultSet set = statement.executeQuery();
-            System.out.println(set);
-            while (set.next()){
-                shift = new Shift(set.getInt("shiftId"), set.getString("content"), set.getTimestamp("startTime"), set.getTimestamp("endTime"),set.getInt("rate"),set.getInt("branchId"));
-                shifts.add(shift);
-            }
-        }catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-        return shifts;
-    }
 }
