@@ -6,12 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="./webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./webjars/bootstrap/5.2.0/css/bootstrap.min.css">
-    <script src="./webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+    <c:set var="context" value="${pageContext.request.contextPath}" />
+    <link rel="stylesheet" href="${context}/webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="${context}/webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+    <script src="${context}/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+    <script src="${context}/webjars/jquery/3.6.1/jquery.js"></script>
     <title>Title</title>
 </head>
 <body>
