@@ -2,7 +2,6 @@ package com.example.myworkschedule.servlets;
 
 import com.example.myworkschedule.beans.User;
 import com.example.myworkschedule.dao.User.UserDaoImpl;
-import com.example.myworkschedule.dao.UserDao;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,14 +14,14 @@ import java.util.List;
 public class BranchEmployeeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDaoImpl dao1 = new UserDaoImpl();
-        UserDao dao = new UserDao();
+        UserDaoImpl dao = new UserDaoImpl();
         List<User> users = dao.searchBranchEmployee(1);
-        List<User> usersBranchless = dao1.searchEmployeeWithoutBranch();
+        List<User> usersBranchless = dao.searchEmployeeWithoutBranch();
         req.setAttribute("usersBranchless", usersBranchless);
         req.setAttribute("users", users);
         req.getRequestDispatcher("/views/EmployerResult.jsp").forward(req, resp);
     }
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int employeeId = Integer.parseInt(req.getParameter("employeeId"));
