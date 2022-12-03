@@ -160,16 +160,17 @@ public class UserDaoImpl implements UserDao {
         List<User> users = new ArrayList<>();
         try{
             Connection connection = DatabaseConnection.getConnection();
-            String sql= "SELECT u.firstName, u.lastName FROM shift s \n" +
-                    "JOIN employeeshift es ON shift_shiftId = s.shiftId \n" +
-                    "JOIN user u ON employee_employeeId = employeeId WHERE s.shiftId = ?";
+            String sql= "SELECT u.firstName, u.lastName, u.employeeId FROM shift s \n" +
+                    "JOIN employeeshift es ON es.shift_shiftId = s.shiftId \n" +
+                    "JOIN user u ON es.employee_employeeId = u.employeeId WHERE s.shiftId = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1,shiftId);
             ResultSet set = statement.executeQuery();
             while (set.next()){
                 String firstName = set.getString("firstName");
                 String lastName = set.getString("lastName");
-                user = new User(0, firstName,lastName,null,null,null ,null );
+                int employeeId = set.getInt("employeeId");
+                user = new User(0, firstName,lastName,null,null, employeeId,null );
                 users.add(user);
             }
 

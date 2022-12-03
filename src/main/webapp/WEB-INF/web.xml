@@ -35,9 +35,8 @@
     <servlet-mapping>
         <servlet-name>EmployerBranchShiftServlet</servlet-name>
         <url-pattern>/employer/branch/shift</url-pattern>
+        <url-pattern>/employer/branch/shift/delete</url-pattern>
     </servlet-mapping>
-
-
 
     <servlet-mapping>
         <servlet-name>ViewBranchEmployeesShiftServlet</servlet-name>
