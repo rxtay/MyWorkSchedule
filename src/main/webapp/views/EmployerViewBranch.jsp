@@ -3,9 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="./webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./webjars/bootstrap/5.2.0/css/bootstrap.min.css">
-    <script src="./webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+    <c:set var="context" value="${pageContext.request.contextPath}" />
+    <link rel="stylesheet" href="${context}/webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="${context}/webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+    <script src="${context}/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+    <script src="${context}/webjars/jquery/3.6.1/jquery.js"></script>
     <title>Users</title>
 </head>
 <body>
@@ -133,7 +135,6 @@
         </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
     const handleEdit = (label, shiftId, description, rate, startTime, endTime) => {
         $('#editShiftModalLabel')

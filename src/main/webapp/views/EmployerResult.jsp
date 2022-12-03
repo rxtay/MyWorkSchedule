@@ -7,12 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <html>
 <head>
-    <link rel="stylesheet" href="./webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./webjars/bootstrap/5.2.0/css/bootstrap.min.css">
-    <script src="./webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+    <c:set var="context" value="${pageContext.request.contextPath}" />
+    <link rel="stylesheet" href="${context}/webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="${context}/webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+    <script src="${context}/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
     <title>Employer Result</title>
 </head>
 <body>
@@ -23,7 +23,6 @@
                     Back
                 </button>
                 <h2> All Members</h2>
-
             <button type="button" class=" btn btn-outline-dark "  data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Add Member
             </button>
@@ -54,7 +53,6 @@
                 <h5 class="modal-title" id="addBranchEmployeeLabel">Add Employee</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
                 <div class="modal-body ">
                     <c:forEach var="x" items="${usersBranchless}">
                         <form method="post" action="members">
@@ -70,7 +68,6 @@
                             </div>
                         </form>
                     </c:forEach>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -78,9 +75,4 @@
         </div>
     </div>
 </div>
-<script>
-    const handleSubmit = (employeeId) => {
-
-    }
-</script>
 </html>

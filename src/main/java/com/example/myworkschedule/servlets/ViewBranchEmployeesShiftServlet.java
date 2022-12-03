@@ -15,7 +15,7 @@ public class ViewBranchEmployeesShiftServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EmployeeShiftDaoImpl dao = new EmployeeShiftDaoImpl();
-        List<Shift> shift = dao.GetAssignedShifts(111);
+        List<Shift> shift = dao.GetAssignedShifts(1);
         request.setAttribute("shifts", shift);
         request.getRequestDispatcher("/views/ViewEmployeesShift.jsp").forward(request, response);
     };
