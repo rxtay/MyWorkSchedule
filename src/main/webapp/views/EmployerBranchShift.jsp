@@ -7,17 +7,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <html>
 <head>
-    <link rel="stylesheet" href="./webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./webjars/bootstrap/5.2.0/css/bootstrap.min.css">
-    <script src="./webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+    <c:set var="context" value="${pageContext.request.contextPath}" />
+    <link rel="stylesheet" href="${context}/webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="${context}/webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+    <script src="${context}/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+    <script src="${context}/webjars/jquery/3.6.1/jquery.js"></script>
     <title>Title</title>
 </head>
 <body>
 <div class="container mt-4">
-
     <div class="d-flex justify-content-end mb-4">
         <button type="button" class=" btn btn-outline-dark  " data-bs-toggle="modal" data-bs-target="#exampleModal">
             Assign Member
@@ -29,10 +29,12 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-between">
                         <h5 class="card-title">${x.firstName} ${x.lastName} </h5>
-                        <div>
-
-                            <i class="bi-trash"></i>
-                        </div>
+                        <form id="form-${x.employeeId}" action="${context}/employer/branch/shift/delete" method="post">
+                            <input type="hidden" name="employeeId" value="${x.employeeId}" />
+                            <div>
+                                <i onclick="handleClick('<c:out value="${x.employeeId}" />')" class="bi-trash"></i>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -43,4 +45,15 @@
     <p class="text-center text-muted">© Copyright 2022, MyWorkSchedule</p>
 </footer>
 </body>
+<script>
+    const handleClick = (employeeId) => {
+        $("#form-"+employeeId).submit()
+    }
+    window.onload = () => {
+        var message = '<%=request.getAttribute("message")%>'
+        if (message !== "null") {
+            alert(message)
+        }
+    }
+</script>
 </html>
