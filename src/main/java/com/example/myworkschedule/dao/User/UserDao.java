@@ -1,14 +1,11 @@
 package com.example.myworkschedule.dao.User;
 
+import com.example.myworkschedule.beans.DataOrException;
 import com.example.myworkschedule.beans.User;
 
 import java.util.List;
 
 public interface UserDao {
-    int insertNewEmployeeId();
-    int insertNewEmployerId();
-    int registerUser(User user, String role);
-    List<User> searchBranchEmployee(int branchId);
+    DataOrException<Integer> insertUser(User user);
     User login(String email, String password);
-    List<User> getEmployeesAssignedShift(int shiftId);
 }
