@@ -10,6 +10,5 @@ import java.util.List;
 public interface BranchDao {
     BranchShift getBranch(int branchId);
     List<Branch> getEmployeeBranches(int employeeId);
-    List<Shift> getEmployeeShift(int employeeId);
     DataOrException<Boolean> insertBranch(Branch branch);
 }

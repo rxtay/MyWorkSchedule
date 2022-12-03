@@ -2,6 +2,7 @@ package com.example.myworkschedule.servlets;
 
 import com.example.myworkschedule.beans.Shift;
 import com.example.myworkschedule.dao.Branch.BranchDaoImpl;
+import com.example.myworkschedule.dao.EmployeeShift.EmployeeShiftDaoImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,10 +14,8 @@ import java.util.List;
 public class ViewBranchEmployeesShiftServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        BranchDaoImpl dao = new BranchDaoImpl();
-        List<Shift> shift = dao.getEmployeeShift(111);
-        System.out.println(shift);
-
+        EmployeeShiftDaoImpl dao = new EmployeeShiftDaoImpl();
+        List<Shift> shift = dao.GetAssignedShifts(111);
         request.setAttribute("shifts", shift);
         request.getRequestDispatcher("/views/ViewEmployeesShift.jsp").forward(request, response);
     };
