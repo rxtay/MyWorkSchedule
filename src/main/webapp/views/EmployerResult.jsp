@@ -61,7 +61,7 @@
                             <div class="row m-0 mb-2">
                                 <div class="card">
                                     <div class="card-body d-flex justify-content-between align-items-center">
-                                        <h5 class="card-title m-0">${x.firstName} ${x.lastName} ${x.employeeId}</h5>
+                                        <h5 class="card-title m-0">${x.firstName} ${x.lastName}</h5>
                                         <button type="submit"> Add
                                         <input  type="hidden" value="${x.employeeId}" name="employeeId" id="employeeId">
                                         </button>
