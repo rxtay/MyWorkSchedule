@@ -16,10 +16,9 @@ public class EmployeeBranchDaoImpl implements EmployeeBranchDao {
         try {
             List<User> users = new ArrayList<>();
             Connection connection = DatabaseConnection.getConnection();
-            String sql = "select * from user where user.employeeId IN (select employee.employeeId \n" +
-                    "from employee\n" +
-                    "where not exists (select * from branchemployee where employee.employeeId = branchemployee.employee_employeeId))";
+            String sql = "select * from user where user.employeeId IN (select employee.employeeId from employee where not exists (select * from branchemployee where employee.employeeId in (select branchemployee.employee_employeeId from branchemployee where branchemployee.branch_branchId = ?)));";
             PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, branchId);
             ResultSet set = statement.executeQuery();
             while (set.next()){
                 int userId = set.getInt("userId");
