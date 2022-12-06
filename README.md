@@ -4,7 +4,7 @@ A Java Web Application for managing part-timers across multiple organizations.
 
 ## Description
 
-Experiencing poor staffing management? MyWorkScheldule, a unified platform for managing part-timers across multiple organizations and branches, ensures a hassle-free experience for employers to create, assign, and make changes to a shift. At the same time, track and be informed of personal work schedules in real time.
+Experiencing poor staffing management? MyWorkSchedule, a unified platform for managing part-timers across multiple organizations and branches, ensures a hassle-free experience for employers to create, assign, and make changes to a shift. At the same time, track and be informed of personal work schedules in real time.
 ## Target Audience
 
 Human resource agencies and teams offering employees flexible work schedules.
