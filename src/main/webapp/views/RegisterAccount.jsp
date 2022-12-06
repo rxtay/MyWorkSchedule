@@ -25,32 +25,35 @@
                 <div class="card rounded">
                     <div class="card-body p-5">
                         <h3 class="text-center mb-5">MyWorkSchedule</h3>
-                        <form method="post" action="register">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+
+                        <form  method="post" action="register"  >
+                            <div class="form-floating mb-3 ">
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
                                 <label for="firstName">First Name</label>
+
+
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                            <div class="form-floating mb-3 ">
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
                                 <label for="lastName">Last Name</label>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                            <div class="form-floating mb-3 ">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
                                 <label for="email">Email address</label>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            <div class="form-floating mb-3 ">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                 <label for="password">Password</label>
                             </div>
-                            <div class="mb-4">
-                                <select class="form-select" name="role" id="role" aria-label="type" required>
+                            <div class="mb-4 ">
+                                <select class="form-select " name="role" id="role" aria-label="type" required>
                                     <option value="employee" selected>Employee</option>
                                     <option value="employer">Employer</option>
                                 </select>
                             </div>
                             <div class="d-grid">
                                 <button type="submit"
-                                        class="btn btn-primary btn-block">
+                                        class="btn btn-primary btn-block"  >
                                     Register
                                 </button>
                             </div>
@@ -64,5 +67,6 @@
         </div>
     </div>
 </section>
+
 </body>
 </html>
