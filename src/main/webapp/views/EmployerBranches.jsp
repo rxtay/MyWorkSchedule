@@ -1,106 +1,68 @@
 <%--
   Created by IntelliJ IDEA.
   User: arzen
-  Date: 21/11/2022
-  Time: 9:32 pm
+  Date: 28/11/2022
+  Time: 9:52 pm
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <html>
 <head>
-    <c:set var="context" value="${pageContext.request.contextPath}" />
-    <link rel="stylesheet" href="${context}/webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="${context}/webjars/bootstrap/5.2.0/css/bootstrap.min.css">
-    <script src="${context}/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
-    <script src="${context}/webjars/jquery/3.6.1/jquery.js"></script>
-    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container mt-4 mb-4">
-    <%--    Create button section    --%>
-    <div class="d-flex justify-content-end mb-4">
-        <button type="button" class=" btn btn-outline-dark  " data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Create Branch
-        </button>
-    </div>
-    <%--    Branches Section    --%>
-    <div class="d-grid">
-        <c:forEach var="x" items="${branches}">
-            <div class="row m-0 mb-2">
-                <div class="card">
-                    <div class="card-body d-flex justify-content-between">
-                        <h5 class="card-title">${x.name}</h5>
-                        <div>
-                            <i class="bi-pen" data-bs-toggle="modal" data-bs-target="#editBranchModal"></i>
-                            <i class="bi-trash"></i>
-                        </div>
+
+<section class="vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card rounded">
+                    <div class="card-body p-5">
+                        <h3 class="text-center mb-5">MyWorkSchedule</h3>
+
+                        <form  method="post" action="register"  >
+                            <div class="form-floating mb-3 ">
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                                <label for="firstName">First Name</label>
+
+
+                            </div>
+                            <div class="form-floating mb-3 ">
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                                <label for="lastName">Last Name</label>
+                            </div>
+                            <div class="form-floating mb-3 ">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                                <label for="email">Email address</label>
+                            </div>
+                            <div class="form-floating mb-3 ">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="mb-4 ">
+                                <select class="form-select " name="role" id="role" aria-label="type" required>
+                                    <option value="employee" selected>Employee</option>
+                                    <option value="employer">Employer</option>
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit"
+                                        class="btn btn-primary btn-block"  >
+                                    Register
+                                </button>
+                            </div>
+                            <p class="text-center text-muted mt-5 mb-0">Already have an account?
+                                <a href="#" class="text-body"><u>Login</u></a>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
-        </c:forEach>
+        </div>
     </div>
-    <%--    Footer section    --%>
-    <footer class="py-3 fixed-bottom">
-        <p class="text-center text-muted">© Copyright 2022, MyWorkScedule</p>
-    </footer>
+</section>
+
 </body>
-
-
-<%--    Create branch modal --%>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Branch</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="branches" method="post">
-                <div class="modal-body">
-                    <div class="form-group ">
-                        <label for="branchName">Branch Name</label>
-                        <input id="branchName" name="name" class="form-control my-2">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Submit"/>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<%--    Edit branch modal    --%>
-<div class="modal fade" id="editBranchModal" tabindex="-1" aria-labelledby="editBranchModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editBranchModalLabel">Edit Branch</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form>
-                <div class="modal-body">
-                    <div class="form-group ">
-                        <label for="name">Branch Name</label>
-                        <input id="name" class="form-control my-2">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<script>
-    window.onload = () => {
-        const message = '<%=request.getAttribute("message")%>'
-        if (message !== "null") {
-            alert(message)
-        }
-    }
-</script>
 </html>
