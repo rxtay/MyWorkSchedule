@@ -6,15 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <html>
 <head>
-    <c:set var="context" value="${pageContext.request.contextPath}" />
-    <link rel="stylesheet" href="${context}/webjars/bootstrap-icons/1.10.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="${context}/webjars/bootstrap/5.2.0/css/bootstrap.min.css">
-    <script src="${context}/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
-    <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -25,32 +21,35 @@
                 <div class="card rounded">
                     <div class="card-body p-5">
                         <h3 class="text-center mb-5">MyWorkSchedule</h3>
-                        <form method="post" action="register">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+
+                        <form  method="post" action="register"  >
+                            <div class="form-floating mb-3 ">
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
                                 <label for="firstName">First Name</label>
+
+
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                            <div class="form-floating mb-3 ">
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
                                 <label for="lastName">Last Name</label>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                            <div class="form-floating mb-3 ">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
                                 <label for="email">Email address</label>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            <div class="form-floating mb-3 ">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                 <label for="password">Password</label>
                             </div>
-                            <div class="mb-4">
-                                <select class="form-select" name="role" id="role" aria-label="type" required>
+                            <div class="mb-4 ">
+                                <select class="form-select " name="role" id="role" aria-label="type" required>
                                     <option value="employee" selected>Employee</option>
                                     <option value="employer">Employer</option>
                                 </select>
                             </div>
                             <div class="d-grid">
                                 <button type="submit"
-                                        class="btn btn-primary btn-block">
+                                        class="btn btn-primary btn-block"  >
                                     Register
                                 </button>
                             </div>
@@ -64,5 +63,6 @@
         </div>
     </div>
 </section>
+
 </body>
 </html>
