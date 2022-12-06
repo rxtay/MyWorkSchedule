@@ -66,7 +66,7 @@
 
 <footer class="py-3 fixed-bottom">
 
-  <p class="text-center text-muted">© Copyright 2022, MyWorkScedule</p>
+  <p class="text-center text-muted">© Copyright 2022, MyWorkSchedule</p>
 </footer>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
