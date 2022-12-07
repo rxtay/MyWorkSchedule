@@ -2,7 +2,6 @@ package com.example.myworkschedule.servlets;
 
 import com.example.myworkschedule.beans.User;
 import com.example.myworkschedule.dao.User.UserDaoImpl;
-import com.example.myworkschedule.dao.UserDao;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +17,6 @@ public class EmployeeWithoutBranchServlet extends HttpServlet {
         UserDaoImpl dao = new UserDaoImpl();
         List<User> users = dao.searchEmployeeWithoutBranch();
         req.setAttribute("users", users);
-        req.getRequestDispatcher("/views/EmployerResult.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/EmployerBranchMembers.jsp").forward(req, resp);
     }
 }
