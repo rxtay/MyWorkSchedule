@@ -37,7 +37,7 @@ public class BranchEmployeeServlet extends HttpServlet {
             return;
         }
         req.setAttribute("usersBranchless", employees.data);
-        req.setAttribute("users", result.e);
+        req.setAttribute("users", result.data);
         req.getRequestDispatcher("/views/EmployerResult.jsp").forward(req, resp);
     }
     
