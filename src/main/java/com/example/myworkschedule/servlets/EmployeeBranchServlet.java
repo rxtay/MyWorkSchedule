@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet(name = "EmployeeBranchServlet", value = "/EmployeeBranchServlet")
+@WebServlet(name = "EmployeeBranchServlet", value = "/employee/branches")
 public class EmployeeBranchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BranchDaoImpl dao = new BranchDaoImpl();
-        List<Branch> branch = dao.getEmployeeBranches(1);
+        List<Branch> branch = dao.getEmployeeBranches(111);
         System.out.println(branch);
 
         request.setAttribute("branches",branch);

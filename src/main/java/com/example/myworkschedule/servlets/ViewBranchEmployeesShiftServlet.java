@@ -1,7 +1,6 @@
 package com.example.myworkschedule.servlets;
 
 import com.example.myworkschedule.beans.Shift;
-import com.example.myworkschedule.dao.Branch.BranchDaoImpl;
 import com.example.myworkschedule.dao.EmployeeShift.EmployeeShiftDaoImpl;
 
 import javax.servlet.*;
@@ -15,10 +14,10 @@ public class ViewBranchEmployeesShiftServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EmployeeShiftDaoImpl dao = new EmployeeShiftDaoImpl();
-        List<Shift> shift = dao.GetAssignedShifts(1);
+        List<Shift> shift = dao.GetAssignedShifts(111);
         request.setAttribute("shifts", shift);
         request.getRequestDispatcher("/views/ViewEmployeesShift.jsp").forward(request, response);
-    };
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
