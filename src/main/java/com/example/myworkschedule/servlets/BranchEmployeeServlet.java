@@ -21,7 +21,7 @@ public class BranchEmployeeServlet extends HttpServlet {
         List<User> usersBranchless = dao1.searchEmployeeWithoutBranch();
         req.setAttribute("usersBranchless", usersBranchless);
         req.setAttribute("users", users);
-        req.getRequestDispatcher("/views/EmployerResult.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/EmployerBranchMembers.jsp").forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
